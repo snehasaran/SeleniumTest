@@ -1,0 +1,77 @@
+ //Asserting the Sign In button exists or not and clicking it
+		        try
+		           {
+		    	WebElement button = driver.findElement(By.id("signIn        System.out.println"+"(-------SignIn button exists----------\n-----------------------"));
+		           //To uncheck the "Check sign in" checkbox
+		           WebElement check_stay_sign_in = driver.findElement(By.xpath("//*[@id='PersistentCookie']"));
+		            check_stay_sign_in.click();   
+		    	button.click();
+		            }
+		        catch(Throwable e)
+		            {
+		    	System.out.println("Sign button not found: "+ e.getMessage());
+		            }
+		        //Check if login was proper or not
+		        try
+		            {
+		    	WebElement GmailText = driver.findElement(By.xpath("//*[@id=':36']"));
+		            String text = GmailText.getText();
+		            if(text.equals("Primary"))
+		           {
+		    	System.out.println("----------Sucessfuln -------\n-----------------------");
+		           }else
+		           {
+		    	System.out.println("----------Loginure ----------\n-----------------------");
+		    	}
+		           }
+		         catch(Throwable e)
+		            {
+		    	 System.out.println("Inbox not found: "+e.getMessage());
+		            }
+		        //===
+		        //Asserting and click on the Account link which contain Signout button.
+		         try
+		            {
+		    	WebElement person = driver.findElement(By.xpath("//*[@id='gb']/div[1]/div[1]/div[2]/div[5]/div[1]/a/span"));
+		            System.out.println("--------Theunt link containing Signout button exists ---------\n-----------------------");
+		    	person.click();
+		           }
+		        catch(Throwable e)
+		           {
+		    	System.out.println("Linkthe drop-down not found: "+e.getMessage());
+		            }
+
+
+		        //Asserting and clicking on the Signout button.
+		        try
+		           {	
+		    	WebElement signout = driver.findElement(By.xpath("//*[@id='gb_71']"));
+		            System.out.println("--------Signbutton exists  ---------\n-----------------------");
+		    	signout.click();
+		            }
+		        catch(Throwable e)
+		            {
+		    	System.out.println("Signbutton not found: "+e.getMessage());
+		            }
+
+		        //Check whether Signout was proper or not.
+		        try
+		           {	
+		           WebElement GmailText = driver.findElement(By.xpath("//divss = 'banner']/h1"));
+		           String text = GmailText.getText();
+		           if(text.equals("One account. All of Google."))
+		           {
+		           System.out.println("----------Signwas successful -------");
+		           }
+		         else
+		           {
+		            System.out.println("----------Signwasn't successful ----------");
+		    	}
+		            }
+
+		        catch(Throwable e)
+		            {
+		    	System.out.println("Signlink not found: "+e.getMessage());
+		            }
+
+		   
