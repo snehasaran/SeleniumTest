@@ -3,7 +3,7 @@ Automate an end-to-end user e-commerce transaction flow using any open source to
 
 Scenario to automate:
 1. Login using existing account
-2. Perform a search on home page from a pool of key words given below
+2. Perform a search on home page from a pool of key words given : tv, socks, dvd, toys, iPhone 
 3. Identify an item from the result set that you can add to cart
 4. Add the item to cart
 5. Validate that item added is present in the cart and is the only item in the cart
@@ -26,7 +26,10 @@ IDE tested on: Eclipse, Version: Luna Service Release 1 (4.4.1)
 
 How to run the program using command line:
 1. cd to the folder where the project is downloaded
-2. Run the runnable jar with the following command:     java -jar loginValidationWithChromeDriver.jar 
+2. Run the runnable jar with the following command:     
+
+	java -jar loginValidationWithChromeDriver.jar 
+
 3. On the console, enter the credentials/values in the following order: 
 Enter Walmart account's username: 
 <Enter username here> and then hit enter. ---Expected user input
@@ -65,7 +68,7 @@ Enter Walmart account's password:
 <Expected user input>
 
  Please input a value from : tv, socks, dvd, toys, iPhone:
- <Expected user input>
+ <Expected user input>  --- The keywords are case-sensitive. 
  	i)On Unsuccessful input: 
  		-- If the user enters any other value except the ones specified, the program displays "Please enter a valid values i.e. from : tv, socks, dvd, toys, iPhone" error message on screen and terminates.
  		-- You'll need to re-run the program by following the steps mentioned in  "How to run the program using command line:" above.
@@ -127,7 +130,7 @@ Enter Walmart account's password:
 
 			8. Now, all mandatory options have been selected to add an element in the cart. The program checks if the item is in stock, it'll add it to the cart. Else it'll say "Out of Stock" and exit out of the program. 
 
-				i) If after selecting all mandatory options, "Add to Cart" button is displayed --- That implies the item is IN 	  STOCK. The program will then click the Add to Cart button and "Added successfully" message will be displayed on the console. 
+				i) If after selecting all mandatory options, "Add to Cart" button is displayed --- That implies the item is IN STOCK. The program will then click the Add to Cart button and "Added successfully" message will be displayed on the console. 
 
 				ii) If after selecting all mandatory options, "Get In-Stock Alert" button is displayed -- That implies the item is OUT OF STOCK. The program will then click the Get In-Stock Alert button and "Item out of stock" message will be displayed on the console and the program will exit. 
 				  
@@ -146,9 +149,37 @@ Enter Walmart account's password:
 				   		-- Program counts the number of elements in the cart. 
 				   				> If it is 1, "1 element found in cart" message is displayed on the console.
 				   				> Otherwise, "More than 1 element found in cart" message is displayed on the console.
-				   				
+
 				  iii) If the above cases fail, "Could not locate selected item in cart" message is displayed on the console and the program terminates. 
+
+
+
+
+
+Bug found in ChromeDriver: 
+
+* During testing of keywords 'iPhone' and 'socks' , the program sometimes DOES NOT click the selected element even though it is visible on the page/ within the viewport. The program executes the next statement after the .click() method but doesn't click the element explicitly, even though it says the element was selected. Because of this, latter steps fail in program execution and the program enters a sleep/dead state! This happens on a very random basis and I still don't have a workaround for it.
+
+* Another bug that I encountered was "Vector smash protection is enabled" -- Still no clue what that is and where it is coming from. 
+
+On reading/researching about it, I learnt that these 2 are bugs in ChromeDriver which doesn't allow the click event to take place. If I were to spend additional time on the project, I would have :
+	--First: Implemented remaining cases for Login validation, as mentioned above.
+	
+	--Second: Would have tested the same project on at least one more browser like Safari. I tried working with Firefox, and upon running the selenium code on walmart.com , the website would throw a dialogue on the webpage causing the script to fail. Probably, selenium is not compatible with Firefox. I could have researched more, in case I had more time. 
+	
+	--Third: The problem statement given required me to navigate to www.walmart.com and then begin testing, which I noticed late and I had already started off testing with the www.walmart.com/account link. Since I did not have much time left, I left it at that. In case I were given more time, I could have made changes accordingly.
+
+
+Reusability of code:
+
+	-- The code is designed in a way that it can work for any possible keyword. Only the name of the keyword is to be added to the pool of key words. 
+	-- Based on what the mandatory selections are required for that keyword, small patches need to be added too, which doesn't change the design of the program at all. 
+
+
+
 	  			
+
+
 
 
 	   	
