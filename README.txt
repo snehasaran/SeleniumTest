@@ -68,7 +68,10 @@ Enter Walmart account's password:
 <Expected user input>
 
  Please input a value from : tv, socks, dvd, toys, iPhone:
- <Expected user input>  --- The keywords are case-sensitive. 
+ <Expected user input>  
+ 			--- The keywords are case-sensitive. 
+ 			--- The username and password should be of an exisiting user/customer. 
+ 			--- The program is not designed for New users. 
  	i)On Unsuccessful input: 
  		-- If the user enters any other value except the ones specified, the program displays "Please enter a valid values i.e. from : tv, socks, dvd, toys, iPhone" error message on screen and terminates.
  		-- You'll need to re-run the program by following the steps mentioned in  "How to run the program using command line:" above.
